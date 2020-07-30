@@ -3,10 +3,10 @@
 terraform {
   backend "remote" {
     hostname     = "app.terraform.io"
-    organization = "emea-se-playground-2019"
-    workspaces {
-      name = "Guy-AWS-Demostack"
-    }
+    organization = "dlectronique"
+    workspaces  {
+      name = "dlectronique-aws-demostack"
+  }
   }
 }
 
@@ -15,9 +15,9 @@ data "terraform_remote_state" "tls" {
   backend = "remote"
   config = {
     hostname     = "app.terraform.io"
-    organization = "emea-se-playground-2019"
+    organization = "dlectronique"
     workspaces = {
-      name = "tls-root-certificate"
+      name = "dlectronique-tls-root-certificate"
     }
   } //config
 }
@@ -27,9 +27,9 @@ data "terraform_remote_state" "dns" {
 
   config = {
     hostname     = "app.terraform.io"
-    organization = "emea-se-playground-2019"
+    organization = "dlectronique"
     workspaces = {
-      name = "Guy-DNS-Zone"
+      name = "dlectronique-dns-multicloud"
     }
   } //network
 }
@@ -127,7 +127,7 @@ module "secondarycluster" {
   run_nomad_jobs       = var.run_nomad_jobs
   host_access_ip       = var.host_access_ip
   primary_datacenter   = var.primary_namespace
-  # EMEA-SE-PLAYGROUND
+  # dlectronique
   ca_key_algorithm      = data.terraform_remote_state.tls.outputs.ca_key_algorithm
   ca_private_key_pem    = data.terraform_remote_state.tls.outputs.ca_private_key_pem
   ca_cert_pem           = data.terraform_remote_state.tls.outputs.ca_cert_pem
@@ -169,6 +169,7 @@ module "tertiarycluster" {
   run_nomad_jobs       = var.run_nomad_jobs
   host_access_ip       = var.host_access_ip
   primary_datacenter   = var.primary_datacenter
+  
   # EMEA-SE-PLAYGROUND
   ca_key_algorithm      = data.terraform_remote_state.tls.outputs.ca_key_algorithm
   ca_private_key_pem    = data.terraform_remote_state.tls.outputs.ca_private_key_pem
