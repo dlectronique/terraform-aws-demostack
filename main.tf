@@ -17,7 +17,7 @@ data "terraform_remote_state" "tls" {
     hostname     = "app.terraform.io"
     organization = "dlectronique"
     workspaces = {
-      name = "dlectronique-tls-root-certificate"
+      name = "terraform-tls-certificate"
     }
   } //config
 }
@@ -29,7 +29,7 @@ data "terraform_remote_state" "dns" {
     hostname     = "app.terraform.io"
     organization = "dlectronique"
     workspaces = {
-      name = "dlectronique-dns-multicloud"
+      name = "dns-multicloud"
     }
   } //network
 }
