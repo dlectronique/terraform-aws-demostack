@@ -15,7 +15,7 @@ resource "tls_cert_request" "server" {
 
   subject {
     common_name  = "${var.namespace}-server-${count.index}.node.consul"
-    organization = "HashiCorp Demostack"
+    organization = "dlectronique"
   }
 
   dns_names = [
@@ -95,7 +95,7 @@ resource "tls_cert_request" "workers" {
 
   subject {
     common_name  = "${var.namespace}-worker-${count.index}.node.consul"
-    organization = "HashiCorp Demostack"
+    organization = "dlectronique"
   }
 
   dns_names = [
