@@ -6,43 +6,34 @@ data "http" "myipaddr" {
 locals {
   host_access_ip = ["${chomp(data.http.myipaddr.body)}/32"]
 }
+
+## curl http://ipv4.icanhazip.com
 */
 
 variable "host_access_ip" {
   description = "your IP address to allow ssh to work"
-  default     = []
+  default     = ["89.39.136.18"]
 }
 
 
 variable "namespace" {
-  description = <<EOH
-this is the differantiates different demostack deployment on the same subscription, everycluster should have a different value
-EOH
-  default     = "primarystack"
+  description = "Name of demostack deployment"
+  default     = "dlectronique"
 }
 
 variable "primary_namespace" {
-  description = <<EOH
-this is the differantiates different demostack deployment on the same subscription, everycluster should have a different value
-EOH
-
-  default = "primarystack"
+  description = "Name of primary demostack deployment"
+  default = "dlectronique-1"
 }
 
 variable "secondary_namespace" {
-  description = <<EOH
-this is the differantiates different demostack deployment on the same subscription, everycluster should have a different value
-EOH
-
-  default = "secondarystack"
+  description = "Name of secondary demostack deployment"
+  default = "dlectronique-2"
 }
 
 variable "tertiary_namespace" {
-  description = <<EOH
-this is the differantiates different demostack deployment on the same subscription, everycluster should have a different value
-EOH
-
-  default = "tertiarystack"
+  description = "Name of tertiary demostack deployment"
+  default = "dlectronique-3"
 }
 
 variable "primary_region" {
@@ -73,12 +64,12 @@ variable "workers" {
 
 variable "consul_url" {
   description = "The url to download Consul."
-  default     = "https://releases.hashicorp.com/consul/1.2.2/consul_1.2.2_linux_amd64.zip"
+  default     = "https://releases.hashicorp.com/consul/1.8.3/consul_1.8.3_linux_amd64.zip"
 }
 
 variable "consul_ent_url" {
   description = "The url to download Consul."
-  default     = "https://releases.hashicorp.com/consul/1.2.2/consul_1.2.2_linux_amd64.zip"
+  default     = "https://releases.hashicorp.com/consul/1.8.3+ent/consul_1.8.3+ent_linux_amd64.zip"
 }
 
 variable "fabio_url" {
@@ -88,31 +79,32 @@ variable "fabio_url" {
 
 variable "nomad_url" {
   description = "The url to download nomad."
-  default     = "https://releases.hashicorp.com/nomad/0.8.4/nomad_0.8.4_linux_amd64.zip"
+  default     = "https://releases.hashicorp.com/nomad/0.12.3/nomad_0.12.3_linux_amd64.zip"
 }
 
 variable "nomad_ent_url" {
   description = "The url to download nomad."
-  default     = "https://releases.hashicorp.com/nomad/0.8.4/nomad_0.8.4_linux_amd64.zip"
+  default     = "https://releases.hashicorp.com/nomad/0.12.3+ent/nomad_0.12.3+ent_linux_amd64.zip"
 }
 
 variable "cni_plugin_url" {
   description = "The url to download teh CNI plugin for nomad."
-  default     = "https://github.com/containernetworking/plugins/releases/download/v0.8.2/cni-plugins-linux-amd64-v0.8.2.tgz"
+  default     = "https://github.com/containernetworking/plugins/releases/download/v0.8.6/cni-plugins-linux-amd64-v0.8.6.tgz"
 }
 
 variable "vault_url" {
   description = "The url to download vault."
-  default     = "https://releases.hashicorp.com/vault/0.11.1/vault_0.11.1_linux_amd64.zip"
+  default     = "https://releases.hashicorp.com/vault/1.5.2/vault_1.5.2_linux_amd64.zip"
 }
 
 variable "vault_ent_url" {
   description = "The url to download vault."
-  default     = "https://s3-us-west-2.amazonaws.com/hc-enterprise-binaries/vault/ent/0.11.1/vault-enterprise_0.11.1%2Bent_linux_amd64.zip"
+  default     = "https://releases.hashicorp.com/vault/1.5.2+ent/vault_1.5.2+ent_linux_amd64.zip"
 }
 
 variable "owner" {
   description = "IAM user responsible for lifecycle of cloud resources used for training"
+  default     = "dlectronique"
 }
 
 variable "created-by" {
@@ -142,9 +134,8 @@ variable "cidr_blocks" {
 
 variable "zone_id" {
   description = "The CIDR blocks to create the workstations in."
-  default     = ""
+  default     = "Z0559636W3MCJPU0W5U4"
 }
-
 
 variable "public_key" {
   description = "The contents of the SSH public key to use for connecting to the cluster."
@@ -193,19 +184,19 @@ variable "ca_cert_pem" {
 }
 
 variable "consul_gossip_key" {
-  default = ""
+  default = "Bla"
 }
 
 variable "consul_master_token" {
-  default = ""
+  default = "Random text here"
 }
 
 variable "consul_join_tag_value" {
-  default = ""
+  default = "dlectronique"
 }
 
 variable "nomad_gossip_key" {
-  default = ""
+  default = "Bla"
 }
 
 variable "run_nomad_jobs" {
