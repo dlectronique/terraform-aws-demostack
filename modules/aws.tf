@@ -3,7 +3,7 @@ terraform {
 }
 
 
-//Getting the Domaing name
+//Getting the Domain name
 data "aws_route53_zone" "fdqn" {
   zone_id = var.zone_id
 }
@@ -13,7 +13,7 @@ data "aws_ami" "ubuntu" {
   most_recent = true
 
 # ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*
-#ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*
+# ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*
   filter {
     name   = "name"
     # values = ["ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"]

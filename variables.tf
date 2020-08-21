@@ -12,7 +12,7 @@ locals {
 
 variable "host_access_ip" {
   description = "your IP address to allow ssh to work"
-  default     = ["89.39.136.18"]
+  default     = ["89.39.136.18/32"]
 }
 
 

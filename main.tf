@@ -38,11 +38,13 @@ data "terraform_remote_state" "dns" {
 provider "aws" {
   region  = var.primary_region
   alias   = "primary"
+  version = "~> 2.0"	
 }
 
 provider "aws" {
   region  = var.secondary_region
   alias   = "secondary"
+  version = "~> 2.0"
 }
 
 
@@ -77,7 +79,7 @@ module "primarycluster" {
   cidr_blocks          = var.cidr_blocks
   instance_type_server = var.instance_type_server
   instance_type_worker = var.instance_type_worker
-  zone_id              = "${data.terraform_remote_state.dns.outputs.aws_sub_zone_id}"
+  zone_id              = "${data.terraform_remote_state.dns.outputs.aws_sub_zone_id[0]}"
   run_nomad_jobs       = var.run_nomad_jobs
   host_access_ip       = var.host_access_ip
   primary_datacenter   = var.primary_namespace

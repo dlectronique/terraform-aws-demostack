@@ -45,6 +45,10 @@ output "nomad_tag_servers" {
   value = data.template_file.servers.*.vars.node_name
 }
 
+output debug_resource {
+  value = aws_acm_certificate.cert.domain_validation_options
+}
+
 /*
 output "eks_endpoint" {
   value = aws_eks_cluster.eks.endpoint
