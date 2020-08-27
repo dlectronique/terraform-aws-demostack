@@ -97,7 +97,7 @@ variable "cidr_blocks" {
 
 variable "zone_id" {
   description = "The CIDR blocks to create the workstations in."
-  default     = "Z0559636W3MCJPU0W5U4"
+  default     = ""
 }
 
 variable "public_key" {

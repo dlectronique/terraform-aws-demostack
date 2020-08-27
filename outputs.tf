@@ -122,10 +122,6 @@ output "Secondary_nomad_tag_servers" {
   value = module.secondarycluster.nomad_tag_servers
 }
 
-output debug_resource {
-  value       = module.primarycluster.debug_resource
-}
-
 
 // Tertiary
 /*

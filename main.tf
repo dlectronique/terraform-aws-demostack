@@ -11,6 +11,7 @@ terraform {
 }
 
 // Workspace Data
+
 data "terraform_remote_state" "tls" {
   backend = "remote"
   config = {
@@ -84,7 +85,7 @@ module "primarycluster" {
   host_access_ip       = var.host_access_ip
   primary_datacenter   = var.primary_namespace
 
-  # EMEA-SE-PLAYGROUND
+  # dlectronique // tls-certificates
   ca_key_algorithm      = data.terraform_remote_state.tls.outputs.ca_key_algorithm
   ca_private_key_pem    = data.terraform_remote_state.tls.outputs.ca_private_key_pem
   ca_cert_pem           = data.terraform_remote_state.tls.outputs.ca_cert_pem
@@ -129,7 +130,8 @@ module "secondarycluster" {
   run_nomad_jobs       = var.run_nomad_jobs
   host_access_ip       = var.host_access_ip
   primary_datacenter   = var.primary_namespace
-  # dlectronique
+  
+  # dlectronique // tls-certificates
   ca_key_algorithm      = data.terraform_remote_state.tls.outputs.ca_key_algorithm
   ca_private_key_pem    = data.terraform_remote_state.tls.outputs.ca_private_key_pem
   ca_cert_pem           = data.terraform_remote_state.tls.outputs.ca_cert_pem
