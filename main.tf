@@ -130,7 +130,7 @@ module "secondarycluster" {
   run_nomad_jobs       = var.run_nomad_jobs
   host_access_ip       = var.host_access_ip
   primary_datacenter   = var.primary_namespace
-  
+
   # dlectronique // tls-certificates
   ca_key_algorithm      = data.terraform_remote_state.tls.outputs.ca_key_algorithm
   ca_private_key_pem    = data.terraform_remote_state.tls.outputs.ca_private_key_pem
@@ -173,7 +173,7 @@ module "tertiarycluster" {
   run_nomad_jobs       = var.run_nomad_jobs
   host_access_ip       = var.host_access_ip
   primary_datacenter   = var.primary_datacenter
-  
+
   # EMEA-SE-PLAYGROUND
   ca_key_algorithm      = data.terraform_remote_state.tls.outputs.ca_key_algorithm
   ca_private_key_pem    = data.terraform_remote_state.tls.outputs.ca_private_key_pem
