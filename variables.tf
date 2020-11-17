@@ -163,7 +163,7 @@ variable "nomadlicense" {
 
 variable "instance_type_server" {
   description = "The type(size) of data servers (consul, nomad, etc)."
-  default     = "r4.large"
+  default     = "t2.micro"
 }
 
 variable "instance_type_worker" {
